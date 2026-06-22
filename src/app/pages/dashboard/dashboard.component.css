@@ -265,7 +265,19 @@
   font-size: 14px;
   color: #666;
 }
+/* --- AJUSTE INPUT DATA DE NASCIMENTO --- */
+.input-data-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
 
+.label-nascimento {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}
 /* =========================================
    RESPONSIVIDADE (TABLET E MOBILE)
    ========================================= */
@@ -326,4 +338,5 @@
     box-sizing: border-box;
     margin-top: 5px;
   }
+
 }

@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   public novoNome: string = '';
   public novoSexo: string = '';
   public novaData: string = '';
+  public dataHoje: string = new Date().toISOString().split('T')[0];
   
   public vacinasSelecionadas: { [id: number]: boolean } = {};
   public vacinasDatas: { [id: number]: string } = {};
