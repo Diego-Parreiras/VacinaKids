@@ -1,57 +1,62 @@
 <nav class="top-navbar">
-    <div class="nav-logo">
-        <span class="logo-icon">👦🏽🛡️</span>
-        <h2>VacinaKids </h2>
-    </div>
-    <div class="nav-user">
-        <button class="btn-voltar" routerLink="/dashboard">← Voltar</button>
-    </div>
+  <div class="nav-logo">
+    <span class="logo-icon">👦🏽🛡️</span>
+    <h2>VacinaKids</h2>
+  </div>
+  <div class="nav-user">
+    <button class="btn-voltar" routerLink="/dashboard">← Voltar</button>
+  </div>
 </nav>
 
 <div class="detalhes-wrapper">
-
-    <header class="perfil-header">
-        <div class="avatar-grande">👤</div>
-        <div>
-            <h1>Caderneta de {{ nomeCrianca }}</h1>
-            <p class="subtitulo">Informações e histórico de vacinação</p>
-        </div>
-    </header>
-
-    <section class="form-baixa-container" *ngIf="getVacinasPendentes().length > 0">
-        <h3 class="titulo-secao">Registrar Vacina Aplicada</h3>
-        <div class="form-grupo">
-            <select [(ngModel)]="registroSelecionadoId" class="input-form">
-                <option value="" disabled selected>Selecione a Vacina</option>
-                <option *ngFor="let reg of getVacinasPendentes()" [value]="reg.getId()">
-                    {{ reg.getVacina().getNome() }} ({{ reg.getStatus() }})
-                </option>
-            </select>
-            <input type="date" [(ngModel)]="dataAplicacao" class="input-form">
-            <button class="btn-registrar" (click)="registrarAplicacao()">Confirmar</button>
-        </div>
-    </section>
-
-    <div class="alerta-sucesso" *ngIf="getVacinasPendentes().length === 0">
-        🎉 Parabéns! Todas as vacinas previstas estão em dia!
+  <header class="perfil-header">
+    <div class="avatar-grande">👤</div>
+    <div>
+      <h1>Caderneta de {{ nomeCrianca }}</h1>
+      <p class="subtitulo">Informações e histórico de vacinação</p>
     </div>
+  </header>
 
-    <section class="lista-vacinas">
-        <div *ngFor="let registro of historico" class="card-vacina" [ngClass]="{
-           'status-aplicada': registro.getStatus() === 'APLICADA',
-           'status-atrasada': registro.getStatus() === 'ATRASADA',
-           'status-pendente': registro.getStatus() === 'PENDENTE'
-         }">
-            <div class="vacina-info">
-                <h3>{{ registro.getVacina().getNome() }}</h3>
-                <p><strong>Status:</strong> {{ registro.getStatus() }}</p>
-                <p *ngIf="registro.getDataDeAdministracao()">
-                    <strong>Aplicada em:</strong> {{ registro.getDataDeAdministracao() | date:'dd/MM/yyyy' }}
-                </p>
-                <p *ngIf="!registro.getDataDeAdministracao()">
-                    <strong>Idade Recomendada:</strong> {{ registro.getVacina().getMesesRecomendados() }} meses
-                </p>
-            </div>
-        </div>
-    </section>
+  <section class="form-baixa-container" *ngIf="getVacinasPendentes().length > 0">
+    <h3 class="titulo-secao">Registrar Vacina Aplicada</h3>
+    <div class="form-grupo">
+      <select [(ngModel)]="registroSelecionadoId" class="input-form">
+        <option value="" disabled selected>Selecione a Vacina</option>
+        <option *ngFor="let reg of getVacinasPendentes()" [value]="reg.getId()">
+          {{ reg.getVacina().getNome() }} ({{ reg.getStatus() }})
+        </option>
+      </select>
+      
+      <input type="date" [(ngModel)]="dataAplicacao" class="input-form" [max]="dataHoje">
+      
+      <button class="btn-registrar" (click)="registrarAplicacao()">Confirmar</button>
+    </div>
+  </section>
+
+  <div class="alerta-sucesso" *ngIf="getVacinasPendentes().length === 0">
+    🎉 Parabéns! Todas as vacinas previstas estão em dia!
+  </div>
+
+  <section class="lista-vacinas">
+    <div *ngFor="let registro of historico" class="card-vacina" [ngClass]="{
+       'status-aplicada': registro.getStatus() === 'APLICADA',
+       'status-atrasada': registro.getStatus() === 'ATRASADA',
+       'status-pendente': registro.getStatus() === 'PENDENTE'
+     }">
+      <div class="vacina-info">
+        <h3>{{ registro.getVacina().getNome() }}</h3>
+        <p><strong>Status:</strong> {{ registro.getStatus() }}</p>
+        <p *ngIf="registro.getDataDeAdministracao()">
+          <strong>Aplicada em:</strong> {{ registro.getDataDeAdministracao() | date:'dd/MM/yyyy' }}
+        </p>
+        <p *ngIf="!registro.getDataDeAdministracao()">
+          <strong>Idade Recomendada:</strong> {{ registro.getVacina().getMesesRecomendados() }} meses
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="toast-erro" *ngIf="mensagemErro">
+  {{ mensagemErro }}
 </div>

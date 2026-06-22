@@ -54,7 +54,6 @@
             <option value="F">Feminino</option>
           </select>
           
-          <!-- NOVA DIV: Rótulo de Nascimento e Bloqueio de Data -->
           <div class="input-data-wrapper">
             <span class="label-nascimento">Nascimento:</span>
             <input type="date" [(ngModel)]="novaData" class="input-form" [max]="dataHoje" title="Data de Nascimento">
@@ -69,7 +68,6 @@
                 <input type="checkbox" [(ngModel)]="vacinasSelecionadas[vacina.getId()]">
                 {{ vacina.getNome() }}
               </label>
-              <!-- ALTERAÇÃO AQUI: max="dataHoje" para não permitir vacina no futuro -->
               <input type="date" *ngIf="vacinasSelecionadas[vacina.getId()]" [(ngModel)]="vacinasDatas[vacina.getId()]"
                 class="input-data-inline" title="Data da Aplicação" [max]="dataHoje">
             </div>
@@ -80,7 +78,7 @@
       </div>
 
       <div class="filhos-grid">
-        <!-- Componente Reutilizável: Renderiza um card para cada criança -->
+        <!-- Componente: Card Criança -->
         <app-card-crianca *ngFor="let crianca of criancas" [crianca]="crianca"></app-card-crianca>
 
         <div class="card-add-filho" (click)="toggleFormulario()">
@@ -92,7 +90,7 @@
 
     <section class="secao">
       <h3 class="titulo-secao">Campanhas Ativas</h3>
-      <!-- Componente Reutilizável: Renderiza um banner para cada campanha -->
+      <!-- Componente: Card Campanha -->
       <app-card-campanha *ngFor="let campanha of campanhas" [campanha]="campanha"></app-card-campanha>
     </section>
   </main>
@@ -116,4 +114,9 @@
       </div>
     </div>
   </aside>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast-erro" *ngIf="mensagemErro">
+  {{ mensagemErro }}
 </div>

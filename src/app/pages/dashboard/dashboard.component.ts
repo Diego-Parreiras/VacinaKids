@@ -28,8 +28,9 @@ export class DashboardComponent implements OnInit {
   public novoNome: string = '';
   public novoSexo: string = '';
   public novaData: string = '';
+  public mensagemErro: string = '';
   public dataHoje: string = new Date().toISOString().split('T')[0];
-  
+
   public vacinasSelecionadas: { [id: number]: boolean } = {};
   public vacinasDatas: { [id: number]: string } = {};
 
@@ -73,6 +74,20 @@ export class DashboardComponent implements OnInit {
         const dataFinal = dataEscolhida ? dataEscolhida : new Date().toISOString().split('T')[0];
         return { id: v.getId(), dataStr: dataFinal };
       });
+      
+    // Validação de data limite para nascimento
+    if (this.novaData > this.dataHoje) {
+      this.exibirErro('A data de nascimento não pode estar no futuro.');
+      return;
+    }
+
+    // Validação de data limite para vacinas selecionadas
+    for (let vacinaId in this.vacinasSelecionadas) {
+      if (this.vacinasSelecionadas[vacinaId] && this.vacinasDatas[vacinaId] > this.dataHoje) {
+        this.exibirErro('A data da vacina não pode estar no futuro.');
+        return;
+      }
+    }
 
     this.vacinacaoService.adicionarCrianca(this.novoNome, this.novoSexo, dataNascimento, vacinasTomadas);
     this.limparFormulario();
@@ -87,12 +102,19 @@ export class DashboardComponent implements OnInit {
     this.vacinasDatas = {};
     this.mostrarFormulario = false;
   }
+  
+  public exibirErro(mensagem: string): void {
+    this.mensagemErro = mensagem;
+    setTimeout(() => {
+      this.mensagemErro = '';
+    }, 3000); 
+  }
 
   /**
    * Encerra a sessão do usuário ativo.
    */
   public sair(): void {
-    this.vacinacaoService.logout(); 
+    this.vacinacaoService.logout();
     this.router.navigate(['/login']);
   }
 }
