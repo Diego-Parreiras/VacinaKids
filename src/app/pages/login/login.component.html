@@ -11,7 +11,7 @@
       <input type="text" id="nome" placeholder="Seu nome" [(ngModel)]="nomeUsuario">
 
       <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Sua senha secreta" 
+      <input type="password" id="senha" placeholder="Sua senha" 
              [(ngModel)]="senhaUsuario" 
              (ngModelChange)="avaliarSenha()"
              (keyup.enter)="submeterFormulario()">
