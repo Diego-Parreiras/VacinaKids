@@ -51,8 +51,5 @@ Siga as instruções abaixo para rodar a aplicação em seu ambiente de desenvol
 - [Node.js](https://nodejs.org/) instalado na máquina.
 - [Angular CLI](https://angular.io/cli) instalado globalmente (`npm install -g @angular/cli`).
 
-### Passos para instalação:
 
-1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/SEU_USUARIO/nome-do-repositorio.git](https://github.com/SEU_USUARIO/nome-do-repositorio.git)
+   
