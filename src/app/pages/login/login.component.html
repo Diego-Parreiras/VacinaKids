@@ -1,27 +1,38 @@
 <div class="login-container">
-    <div class="login-box">
-        <header class="login-header">
-            <div class="logo-temp">💉</div>
-            <h1>VacinaKids</h1>
-            <p>{{ modoCadastro ? 'Crie sua conta para começar' : 'Acesse sua caderneta de vacinação' }}</p>
-        </header>
+  <div class="login-box">
+    <header class="login-header">
+      <div class="logo-temp">💉</div>
+      <h1>VacinaKids</h1>
+      <p>{{ modoCadastro ? 'Crie sua conta para começar' : 'Acesse sua caderneta de vacinação' }}</p>
+    </header>
 
-        <main class="login-form">
-            <label for="nome">Nome de Usuário</label>
-            <input type="text" id="nome" placeholder="Seu nome" [(ngModel)]="nomeUsuario">
+    <main class="login-form">
+      <label for="nome">Nome de Usuário</label>
+      <input type="text" id="nome" placeholder="Seu nome" [(ngModel)]="nomeUsuario">
 
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Sua senha secreta" [(ngModel)]="senhaUsuario"
-                (keyup.enter)="submeterFormulario()">
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Sua senha secreta" 
+             [(ngModel)]="senhaUsuario" 
+             (ngModelChange)="avaliarSenha()"
+             (keyup.enter)="submeterFormulario()">
 
-            <button class="btn-entrar" (click)="submeterFormulario()">
-                {{ modoCadastro ? 'Criar Minha Conta' : 'Acessar Caderneta' }}
-            </button>
+      <div class="indicador-senha" *ngIf="modoCadastro && senhaUsuario.length > 0">
+        <div class="barra-forca">
+          <div class="preenchimento-forca" [ngClass]="forcaSenha"></div>
+        </div>
+        <span class="texto-forca" [ngClass]="'texto-' + forcaSenha">
+          Senha {{ forcaSenha }}
+        </span>
+      </div>
 
-            <div class="toggle-modo">
-                <p *ngIf="!modoCadastro">Não tem uma conta? <a (click)="alternarModo()">Cadastre-se</a></p>
-                <p *ngIf="modoCadastro">Já possui conta? <a (click)="alternarModo()">Fazer Login</a></p>
-            </div>
-        </main>
-    </div>
+      <button class="btn-entrar" (click)="submeterFormulario()">
+        {{ modoCadastro ? 'Criar Minha Conta' : 'Acessar Caderneta' }}
+      </button>
+
+      <div class="toggle-modo">
+        <p *ngIf="!modoCadastro">Não tem uma conta? <a (click)="alternarModo()">Cadastre-se</a></p>
+        <p *ngIf="modoCadastro">Já possui conta? <a (click)="alternarModo()">Fazer Login</a></p>
+      </div>
+    </main>
+  </div>
 </div>

@@ -1,102 +1,139 @@
+/* Configuração Global da Tela de Login */
 .login-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f1ee;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f1ee;
 }
 
 .login-box {
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
 }
 
+/* Cabeçalho */
 .login-header h1 {
-    color: #473C33;
-    margin: 10px 0;
-    font-size: 28px;
+  color: #473C33;
+  margin: 10px 0;
+  font-size: 28px;
 }
 
 .login-header p {
-    color: #666;
-    margin-bottom: 25px;
+  color: #666;
+  margin-bottom: 25px;
 }
 
 .logo-temp {
-    font-size: 50px;
+  font-size: 50px;
 }
 
+/* Formulário */
 .login-form {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .login-form label {
-    color: #473C33;
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 14px;
+  color: #473C33;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .login-form input {
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    outline: none;
-    transition: 0.3s;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: 0.3s;
 }
 
 .login-form input:focus {
-    border-color: #ABC270;
+  border-color: #ABC270;
 }
 
+/* Indicador de Força de Senha */
+.indicador-senha {
+  margin-top: -15px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.barra-forca {
+  height: 6px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.preenchimento-forca {
+  height: 100%;
+  width: 0%;
+  transition: all 0.3s ease;
+}
+
+.preenchimento-forca.fraca { width: 33%; background-color: #e74c3c; }
+.preenchimento-forca.media { width: 66%; background-color: #f1c40f; }
+.preenchimento-forca.forte { width: 100%; background-color: #2ecc71; }
+
+.texto-forca {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.texto-fraca { color: #e74c3c; }
+.texto-media { color: #f1c40f; }
+.texto-forte { color: #2ecc71; }
+
+/* Botões e Links */
 .btn-entrar {
-    background-color: #ABC270;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+  background-color: #ABC270;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn-entrar:hover {
-    filter: brightness(0.9);
+  filter: brightness(0.9);
 }
 
 .toggle-modo {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
 }
 
 .toggle-modo a {
-    color: #FDA769;
-    /* Laranja da Paleta */
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: underline;
+  color: #FDA769;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .toggle-modo a:hover {
-    color: #473C33;
+  color: #473C33;
 }
-/* =========================================
-   RESPONSIVIDADE (MOBILE)
-   ========================================= */
 
+/* Responsividade */
 @media (max-width: 480px) {
   .login-box {
     margin: 20px;
