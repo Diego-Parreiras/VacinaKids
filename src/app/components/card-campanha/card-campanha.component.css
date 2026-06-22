@@ -1,0 +1,19 @@
+.banner-campanha {
+  background-color: #ABC270;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 15px;
+}
+
+.banner-conteudo h2 {
+  margin: 0 0 5px 0;
+  color: #473C33;
+}
+
+.banner-conteudo p {
+  margin: 0;
+  color: #473C33;
+}

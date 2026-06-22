@@ -1,0 +1,53 @@
+.card-filho {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 5px solid #ABC270;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.filho-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.dados-filho h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #473C33;
+}
+
+.btn-ver-caderneta {
+  width: 100%;
+  background-color: transparent;
+  color: #ABC270;
+  border: 1px solid #ABC270;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-ver-caderneta:hover {
+  background-color: #ABC270;
+  color: white;
+}

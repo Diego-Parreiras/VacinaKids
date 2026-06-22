@@ -1,0 +1,11 @@
+<div class="card-filho">
+  <div class="filho-info">
+    <div class="avatar">👤</div>
+    <div class="dados-filho">
+      <h4>{{ crianca.getNome() }}</h4>
+    </div>
+  </div>
+  <div class="filho-acoes">
+    <button class="btn-ver-caderneta" [routerLink]="['/detalhes', crianca.getId()]">Abrir Caderneta</button>
+  </div>
+</div>

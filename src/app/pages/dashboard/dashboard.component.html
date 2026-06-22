@@ -1,0 +1,115 @@
+<nav class="top-navbar">
+  <div class="nav-logo">
+    <span class="logo-icon">👦🏽🛡️</span>
+    <h2>VacinaKids</h2>
+  </div>
+  <div class="nav-user">
+    <span class="user-name">{{ nomeUsuario }}</span>
+    <button class="btn-sair" (click)="sair()">Sair</button>
+  </div>
+</nav>
+
+<div class="dashboard-wrapper">
+  <main class="main-content">
+    <header class="greeting">
+      <h1>Olá, {{ nomeUsuario }}! Bem-vindo(a) de volta ao VacinaKids!</h1>
+    </header>
+
+    <section class="secao">
+      <h3 class="titulo-secao">Status Geral</h3>
+      <div class="status-grid">
+        <div class="status-card em-dia">
+          <span class="icone-status">🛡️</span>
+          <div>
+            <strong>EM DIA</strong>
+            <p>{{ criancas.length }} crianças</p>
+          </div>
+        </div>
+        <div class="status-card proximas">
+          <span class="icone-status">💉</span>
+          <div>
+            <strong>PRÓXIMAS</strong>
+            <p>Verifique o histórico</p>
+          </div>
+        </div>
+        <div class="status-card pendentes">
+          <span class="icone-status">⚠️</span>
+          <div>
+            <strong>PENDENTES</strong>
+            <p>Atenção necessária</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h3 class="titulo-secao">Meus Filhos</h3>
+
+      <div class="form-expansivel" *ngIf="mostrarFormulario">
+        <div class="form-grupo">
+          <input type="text" placeholder="Nome" [(ngModel)]="novoNome" class="input-form">
+          <select [(ngModel)]="novoSexo" class="input-form">
+            <option value="" disabled selected>Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+          <input type="date" [(ngModel)]="novaData" class="input-form" title="Data de Nascimento">
+        </div>
+
+        <div class="vacinas-checklist">
+          <p>Marque as vacinas já tomadas e informe a data:</p>
+          <div class="vacinas-list">
+            <div class="vacina-item" *ngFor="let vacina of catalogoVacinas">
+              <label class="checkbox-label">
+                <input type="checkbox" [(ngModel)]="vacinasSelecionadas[vacina.getId()]">
+                {{ vacina.getNome() }}
+              </label>
+              <input type="date" *ngIf="vacinasSelecionadas[vacina.getId()]" [(ngModel)]="vacinasDatas[vacina.getId()]"
+                class="input-data-inline" title="Data da Aplicação">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-adicionar" (click)="adicionarNovoFilho()">Salvar Membro</button>
+      </div>
+
+      <div class="filhos-grid">
+        <!-- Componente Reutilizável: Renderiza um card para cada criança -->
+        <app-card-crianca *ngFor="let crianca of criancas" [crianca]="crianca"></app-card-crianca>
+
+        <div class="card-add-filho" (click)="toggleFormulario()">
+          <span class="icon-plus">+</span>
+          <p>Adicionar Criança</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h3 class="titulo-secao">Campanhas Ativas</h3>
+      
+      <!-- Componente Reutilizável: Renderiza um banner para cada campanha -->
+      <app-card-campanha *ngFor="let campanha of campanhas" [campanha]="campanha"></app-card-campanha>
+      
+    </section>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3 class="titulo-secao">Alertas de Vacinação</h3>
+      <div class="alerta-box">
+        <span class="alerta-icone">⚠️</span>
+        <div>
+          <strong>Mantenha em dia</strong>
+          <p>Acesse a caderneta das crianças para verificar pendências.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3 class="titulo-secao">Vacinas Futuras</h3>
+      <div class="lista-futura">
+        <p>As próximas vacinas agendadas aparecerão aqui.</p>
+      </div>
+    </div>
+  </aside>
+</div>

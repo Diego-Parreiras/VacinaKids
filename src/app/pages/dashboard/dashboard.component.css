@@ -1,0 +1,329 @@
+/* --- FUNDO DA PÁGINA --- */
+:host {
+  display: block;
+  background-color: #f7f9fa;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #473C33;
+}
+
+/* --- NAVBAR SUPERIOR --- */
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #eee;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #473C33;
+  font-weight: normal;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.btn-sair {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #473C33;
+  font-weight: bold;
+}
+
+.btn-sair:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- ESTRUTURA PRINCIPAL (ESQUERDA 70% / DIREITA 30%) --- */
+.dashboard-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.main-content {
+  flex: 2.5;
+  min-width: 600px;
+}
+
+.sidebar {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Títulos Globais */
+.greeting h1 {
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.secao {
+  margin-bottom: 40px;
+}
+
+.titulo-secao {
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+/* --- STATUS GERAL (Cards do Topo) --- */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.status-card {
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  color: #473C33;
+}
+
+.icone-status {
+  font-size: 30px;
+}
+
+.em-dia { background-color: #ABC270; }
+.proximas { background-color: #FEC868; }
+.pendentes { background-color: #FDA769; }
+
+.status-card strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.status-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* --- MEUS FILHOS (Grid) --- */
+.filhos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card-add-filho {
+  background-color: #ABC270;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  min-height: 120px;
+}
+
+.card-add-filho:hover {
+  transform: translateY(-5px);
+}
+
+.icon-plus {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.card-add-filho p {
+  margin: 5px 0 0 0;
+  font-weight: bold;
+}
+
+/* --- FORMULÁRIO DE ADIÇÃO (Escondido) --- */
+.form-expansivel {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-grupo {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.input-form {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.vacinas-checklist {
+  margin-bottom: 15px;
+}
+
+.vacinas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacina-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed #eee;
+  padding-bottom: 5px;
+}
+
+.checkbox-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input-data-inline {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-adicionar {
+  background-color: #473C33;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- SIDEBAR (Cartões da Direita Brancos) --- */
+.sidebar-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.alerta-box {
+  background-color: #fff4ea;
+  border: 1px solid #FDA769;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.alerta-icone {
+  font-size: 24px;
+}
+
+.alerta-box strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #FDA769;
+}
+
+.alerta-box p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.lista-futura {
+  font-size: 14px;
+  color: #666;
+}
+
+/* =========================================
+   RESPONSIVIDADE (TABLET E MOBILE)
+   ========================================= */
+@media (max-width: 900px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .main-content {
+    min-width: 100%;
+    flex: 1;
+  }
+  
+  .sidebar {
+    min-width: 100%;
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .nav-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filhos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grupo {
+    flex-direction: column;
+  }
+
+  .input-form {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .vacina-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-data-inline {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+}
